@@ -10,7 +10,7 @@ import logo from '../../assets/solmi.png'
 
 import { signOutUser } from '../../utils/firebase/firebase.utils'
 
-import './navigation.styles.scss'
+import {NavigationContainer, NavLinks, NavLink, LogoContainer} from './navigation.styles'
 
 
 const Navbar = () => {
@@ -18,25 +18,27 @@ const Navbar = () => {
   const { isCartOpen } = useContext(CartContext)
   return (
     <>
-      <div className="navbar">
-        <Link className='logo-container' to='/'>
+      <NavigationContainer>
+        <LogoContainer to='/'>
           <img src={logo} alt="logo" width="50" height="50"/>
-        </Link>
-        <div className='nav-links-container'>
+        </LogoContainer>
+        <NavLinks>
+          <NavLink to='/game'>Game</NavLink>
+          <NavLink to='/shop'>Shop</NavLink>
           {
             currentUser ? (
               <span className='nav-link'>
-                <Link className='nav-link' to='/auth' onClick={signOutUser}>Sign out</Link>
-                <Link className='nav-link' to='/profile'>Profile</Link>
+                <NavLink to='/auth' onClick={signOutUser}>Sign out</NavLink>
+                <NavLink to='/profile'>Profile</NavLink>
               </span>
             ) : (
               <Link className='nav-link' to='/auth'>Sign in</Link>
             )
           }
-        </div>
-        <CartIcon/>
+        </NavLinks>
+      <CartIcon/>
         {isCartOpen && <CartDropdown/>}
-      </div>
+      </NavigationContainer>
       <Outlet/>
     </>
   )

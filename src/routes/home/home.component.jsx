@@ -6,7 +6,8 @@ const Home = () => {
     {
       id: 1,
       title: "No Reset Sprint",
-      imgUrl: "https://i.kym-cdn.com/photos/images/newsfeed/001/018/866/e44.png"
+      imgUrl: "https://i.kym-cdn.com/photos/images/newsfeed/001/018/866/e44.png",
+      route: 'game/'
     },
     {
       id: 2,
